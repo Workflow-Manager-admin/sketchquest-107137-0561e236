@@ -8,6 +8,55 @@ This project provides a minimal React template with a clean, modern UI and minim
 - **Modern UI**: Clean, responsive design with KAVIA brand styling
 - **Fast**: Minimal dependencies for quick loading times
 - **Simple**: Easy to understand and modify
+- **Firebase Ready**: Integrated Firebase JS SDK for real-time features and authentication
+
+## Firebase JS SDK Integration
+
+This app is configured to use [Firebase](https://firebase.google.com/) for real-time multiplayer support and authentication.
+
+### Config & Environment Setup
+
+- **Secrets are NOT committed:** Configure your API keys and secrets via environment variables.
+- Copy `.env.example` to `.env` in this directory and fill in actual secret values (see below).
+- All Firebase config values are referenced via `REACT_APP_FIREBASE_...` environment variables.
+
+### Quickstart
+
+1. Install dependencies:
+    ```bash
+    npm install
+    ```
+2. Create `.env`:
+    ```bash
+    cp .env.example .env
+    ```
+   Fill in the Firebase config for your project.
+
+3. Start the app as normal.
+
+### Usage in Code
+
+- The Firebase app and auth instance are initialized in `src/firebase.js`.
+- Username-based (anonymous) authentication is provided via utility methods in `src/auth.js`:
+  - `signInWithUsername(username)` – signs in anonymously and stores a username locally.
+  - `getCurrentUsername()` – retrieves the locally-stored username.
+  - `listenToAuthState(callback)` – subscribes to auth state changes.
+
+### Environment Variables
+
+See `.env.example` for required keys/structure.
+
+| Variable                     | Purpose                  |
+|------------------------------|--------------------------|
+| REACT_APP_FIREBASE_API_KEY         | Firebase API Key         |
+| REACT_APP_FIREBASE_AUTH_DOMAIN     | Auth Domain              |
+| REACT_APP_FIREBASE_PROJECT_ID      | Project ID               |
+| REACT_APP_FIREBASE_STORAGE_BUCKET  | Storage Bucket           |
+| REACT_APP_FIREBASE_MESSAGING_SENDER_ID | Messaging Sender ID      |
+| REACT_APP_FIREBASE_APP_ID          | App ID                   |
+| REACT_APP_FIREBASE_MEASUREMENT_ID  | Measurement ID           |
+
+**Never commit your filled `.env` file.**
 
 ## Getting Started
 
